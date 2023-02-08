@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/scroll.js"></script>
+</head>
+<style>
+    .gridBox {
+        overflow: hidden;
+        /*display: block;*/
+        position: relative;
+        width: 1000px;
+        margin: 0 auto;
+        height: 400px;
+    }
+
+    .scrollBox {
+        position: relative;
+    }
+
+    .grid {
+        width: 1000px;
+        height: 300px;
+        overflow: hidden;
+        perspective: 500px;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+
+    .grid img {
+        width: 60px;
+        height: 60px;
+        float: left;
+        display: inline-block;
+    }
+
+    .animate {
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .unpause {
+        text-align: center;
+        cursor: pointer;
+    }
+</style>
+<body>
+<div class="gridBox">
+    <div class="grid">
+    </div>
+</div>
+</body>
+<script>
+	let images = "", count = 50;
+	for (let i = 1; i <= count; i++)
+		images += '<img class= "renderWaterImg" src="./img/' + i + '.png" />';
+	//添加图片
+	$(".grid").append(images);
+	let indexFun = new fun({
+		dom: ".gridBox",
+		subDom: ".grid",
+		speed: 3,
+	})
+	indexFun.runActive()
+	$('.gridBox img').on("mouseenter", function () {
+		indexFun.stopActive()
+	})
+	$('.gridBox img').on("mouseleave", function () {
+		indexFun.runActive()
+	})
+</script>
+</html>
++
