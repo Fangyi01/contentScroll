@@ -18,7 +18,6 @@ function fun(option) {
 	// 合并参数
 	this.program = Object.assign({}, this.options, this.events, option)
 	this.dom = $(this.program.dom)
-	// this.program = $.extend(this.options,this.events,option)
 	this.init()
 }
 
@@ -63,7 +62,6 @@ fun.prototype.activeAnimate = function () {
 			$(_this.program.dom).find('.scrollBox').css({left: "0px"})
 		})
 	}, 10)
-	// .promise().done(function () {});
 }
 fun.prototype.activeRequest = function () {
 	let _this = this;
@@ -79,7 +77,6 @@ fun.prototype.activeRequest = function () {
 	_this.interval = requestAnimationFrame(_this.activeRequest.bind(this));
 }
 fun.prototype.stopActive = function () {
-	// clearInterval(this.interval)
 	cancelAnimationFrame(this.interval)
 }//鼠标移上时，清除定时器，停止滚动
 
